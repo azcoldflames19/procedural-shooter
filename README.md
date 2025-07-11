@@ -8,9 +8,6 @@ A retro-styled, procedurally generated top-down shooter written in **Python** us
 - Smooth camera movement, screen-shake, and radial start-of-game fade-in.
 - Fully commented codebase for easy hacking – see top‐of‐file headers.
 
-## Screenshots
-*(add your own images here)*
-
 ## Getting Started
 ```bash
 # Clone the repo
@@ -22,7 +19,7 @@ python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 
 # Install dependencies
-pip install pygame
+pip install pygame noise
 
 # Run the game
 python main.py
