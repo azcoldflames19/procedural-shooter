@@ -29,6 +29,9 @@ class Game:
 
         self.tile_size = 16
 
+        # Background colour (cyan theme)
+        self.water_blue = (0, 180, 180)
+
         self.cursor = Cursor(self.tile_size)
         self.text_manager = TextManager(self.tile_size, (self.WIDTH, self.HEIGHT))
         self.camera = Camera((self.WIDTH, self.HEIGHT), self.tile_size)
@@ -256,14 +259,14 @@ class Game:
 
     def draw(self, camera_offset):
         # Clear window with ocean color to prevent black background
-        self.window.fill((10, 25, 80))  # deeper navy blue
+        self.window.fill(self.water_blue)  # cyan background
         
         # DEBUG: Draw simple colored rectangles instead of complex surfaces
-        # Draw ocean background - full window aqua rectangle
-        pygame.draw.rect(self.window, (25, 60, 120), (0, 0, self.WIDTH, self.HEIGHT))
+        # Draw ocean background - full window cyan rectangle (slightly darker)
+        pygame.draw.rect(self.window, (0, 150, 150), (0, 0, self.WIDTH, self.HEIGHT))
         
         # Draw terrain background - offset purple rectangle
-        pygame.draw.rect(self.window, (140, 90, 200), 
+        pygame.draw.rect(self.window, (120, 80, 180), 
                         (100 - camera_offset[0], 100 - camera_offset[1], 400, 200))
         
         # Original surface rendering (commented out for debug)
@@ -481,7 +484,7 @@ class Game:
                     self.lost = False
 
         if self.game_started == False or self.lost:      
-            self.fade.fill((10, 25, 80))  # Use deeper navy blue
+            self.fade.fill(self.water_blue)  # Use cyan for fade bg
             self.fade.set_colorkey((255, 255, 255))
             pygame.draw.circle(self.fade, (255, 255, 255), (self.WIDTH/2, self.HEIGHT/2), self.radius)
             self.window.blit(self.fade, (0, 0))
